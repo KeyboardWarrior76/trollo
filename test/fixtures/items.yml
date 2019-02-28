@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list: one
+  user: one
+  item: MyString
+  priority: MyString
+  details: MyText
+
+two:
+  list: two
+  user: two
+  item: MyString
+  priority: MyString
+  details: MyText
