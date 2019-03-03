@@ -48,7 +48,7 @@
             width: calc(100% - 4rem);
             height: 4rem;
             background-color: rgba(100,100,100, 0.97);
-            color: white;
+            color: $color-white;
             border: none;
             border-radius: $border-radius;
             padding-left: 1rem;
@@ -142,8 +142,8 @@
     top: 0;
     right: 0;
     padding: 0.35rem 1rem; 
-    border: 1px solid crimson;
+    border: 1px solid $color-pink;
     border-radius: $border-radius;
-    color: crimson;
+    color: $color-pink;
     background-color: rgba(0,0,0,0.4);
 }

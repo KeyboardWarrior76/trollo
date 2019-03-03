@@ -51,7 +51,7 @@ User.all().each() {|user|
         for i in (1..3)
             list = List.create(
                 list: Faker::Verb.base() + " today",
-                order_by: "created_at",
+                order_by: "priority, created_at",
                 user_id: user.id,
                 board_id: board.id
             )
@@ -60,7 +60,7 @@ User.all().each() {|user|
             for i in (1..val)
                 Item.create_item(
                     item: Faker::Verb.ing_form(),
-                    priority: "N/A",
+                    priority: ["A","B","C"][rand(0..3).to_i],
                     details: Faker::Lorem.sentence(20),
                     user_id: user.id,
                     list_id: list.id

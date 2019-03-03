@@ -33,7 +33,13 @@
                         <img class="dropdown-img" src="/assets/angle-circle-down.svg" alt="dropdown icon">
 
                         <%# ITEM HEADING %>
-                        <p> <%= "#{"(" + item.priority + ")" if(item.priority != "N/A")} #{item.item}"%> </p>
+                        <p style="color: 
+                            <%= if(item.priority =="A") then "#7986cb"
+                                elsif(item.priority =="B") then "#4db6ac"
+                                else "white" end
+                            ;%>" > 
+                            <%= item.item %>   <%#  #4db6ac GREEN!! %>
+                        </p>
 
                         <%# INVISIBLE CHECKBOX %>
                         <input  class="item-checkbox <%= item.id %>" id="item<%= item.id %>" type="checkbox">
@@ -47,7 +53,7 @@
 
                             <div class="priority-input">
                                 <%= label_tag :priority, nil, class: "priority-label" %>
-                                <%= select_tag :priority, options_for_select(["N/A", "A", "B", "C", "D"], item.priority), required: true, class: "priority-input" %>
+                                <%= select_tag :priority, options_for_select(["C", "B", "A"], item.priority), required: true, class: "priority-input" %>
                             </div>
 
                             <%= label_tag :details, nil, class: "details-label" %>
@@ -114,22 +120,22 @@
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "priority", if(list.order_by == "priority") then :checked end %> 
+                    <%= radio_button_tag :order_by, "priority, created_at", if(list.order_by == "priority, created_at") then :checked end %> 
                     &nbsp Priority
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "priority DESC" , if(list.order_by == "priority DESC") then :checked end, class: "radio" %>
+                    <%= radio_button_tag :order_by, "priority DESC, created_at" , if(list.order_by == "priority DESC, created_at") then :checked end, class: "radio" %>
                     &nbsp Reverse Priority
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "created_at", if(list.order_by == "created_at") then :checked end %> 
+                    <%= radio_button_tag :order_by, "created_at DESC", if(list.order_by == "created_at DESC") then :checked end %> 
                     &nbsp Recently Created
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "created_at DESC", if(list.order_by == "created_at DESC") then :checked end %> 
+                    <%= radio_button_tag :order_by, "created_at", if(list.order_by == "created_at") then :checked end %> 
                     &nbsp Last Created
                 </div>
 
