@@ -1,9 +1,6 @@
 class ItemsController < ApplicationController
 
     def create
-        puts "==============================="
-        puts params
-        puts "==============================="
         Item.create_item(
             item: params[:item],
             user_id: current_user.id,
@@ -11,6 +8,21 @@ class ItemsController < ApplicationController
         )
 
         redirect_to( "/boards/#{params[:board_id]}" )
+    end
+
+    def update
+        puts "==============================="
+        puts params
+        puts "==============================="
+        Item.update_item(
+            user_id: current_user.id,
+            item_id: params[:id],
+            priority: params[:priority],
+            details: params[:details],
+        )
+
+        redirect_to( "/boards/#{params[:board_id]}" )
+        
     end
 
     def destroy

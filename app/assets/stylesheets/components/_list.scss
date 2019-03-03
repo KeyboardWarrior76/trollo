@@ -82,7 +82,7 @@
     .item-checkbox {
         display: none;
 
-        &:checked + form{
+        &:checked + div{
             display: block;
         }
 
@@ -98,22 +98,33 @@
     }
 }
 
-.list__item-form {
-    display: none;
+.item-edit-delete-container{
+    display: none; 
     position: relative;
     margin-top: 2rem;
+    padding-top: 2.25rem;
+}
 
+.list__item-form {
     label {
         font-size: 1.4rem;
     }
     
     .priority-input {
         position: absolute;
+        height: 2.3rem;
         top: 0;
-        right: 22.5%;
-        width: 13.5rem;
+        right: 18.5rem;
+        width: 10rem;
+
+        &-label {
+            position: absolute;
+            left: 0;
+        }
    
         select {
+            position: absolute;
+            right: 0;
             width: 4.5rem;
             color: $color-white;
             background-color: rgba(0,0,0,0.4);
@@ -134,6 +145,17 @@
         font-size: 1.4rem;
         resize: vertical;
         overflow: auto;
+    }
+
+    .item-edit-submit {
+        position: absolute;
+        top: 0;
+        right: 6.25rem;
+        padding: 0.35rem 1rem; 
+        border: 1px solid $color-green;
+        border-radius: $border-radius;
+        color: $color-green;
+        background-color: rgba(0,0,0,0.4);
     }
 }
 

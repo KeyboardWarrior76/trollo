@@ -1,8 +1,5 @@
 class ListsController < ApplicationController
     def create
-        puts "==============================="
-        puts params
-        puts "==============================="
         List.create_list(
             list: params[:list],
             order: "Default",

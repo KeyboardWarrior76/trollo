@@ -19,4 +19,15 @@ class Item < ApplicationRecord
       VALUES (?, ?, ?, ?, ?, ?, ?);
     ", attr[:item], attr[:priority] || "N/A", attr[:details] || "", DateTime.now(), DateTime.now(), attr[:user_id], attr[:list_id]])
   end
+
+  def self.update_item(attr)
+    return List.find_by_sql(["
+      UPDATE items 
+      SET priority = ?,
+          details = ?
+      WHERE user_id = ?
+      AND id = ?
+    ", attr[:priority],  attr[:details], attr[:user_id], attr[:item_id]])
+  end
+
 end

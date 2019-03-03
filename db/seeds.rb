@@ -60,7 +60,7 @@ User.all().each() {|user|
             for i in (1..val)
                 Item.create_item(
                     item: Faker::Verb.ing_form(),
-                    priority: ["A","B","C"][rand(0..3).to_i],
+                    priority: ["A","B","C"][rand(0..2).to_i],
                     details: Faker::Lorem.sentence(20),
                     user_id: user.id,
                     list_id: list.id
