@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :boards do
-    resources :list, only: [:create, :update, :destroy]
+    resources :lists, only: [:create, :update, :destroy]
   end
 
-  post "lists/:id/items" => "item#create"
-  put "lists/:id/items/:id" => "item#update"
-  delete "lists/:id/items/:id" => "item#destroy"
+  post "/lists/:id/items" => "items#create"
+  put "/lists/:id/items/:id" => "items#update"
+  delete "/lists/:id/items/:id" => "items#destroy"
 
 
 end

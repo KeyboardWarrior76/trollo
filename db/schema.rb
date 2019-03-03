@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_224305) do
+ActiveRecord::Schema.define(version: 2019_03_02_221414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 2019_02_28_224305) do
   create_table "lists", force: :cascade do |t|
     t.bigint "board_id"
     t.bigint "user_id"
-    t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "list"
+    t.string "order_by"
     t.index ["board_id"], name: "index_lists_on_board_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end

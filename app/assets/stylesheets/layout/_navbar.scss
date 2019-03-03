@@ -1,0 +1,84 @@
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 1rem 2rem;
+    background-color: rgba(0,0,0,0.8);
+    border-bottom: 1px solid black;
+    z-index: 100;
+
+
+    &__board-items {
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: $color-white;
+            border: 0.5px solid $color-white;
+            border-radius: $border-radius;
+            padding: 0.5rem;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        a:hover {
+            background-color: $color-white;
+            color: black;
+        }
+
+        .board-name {
+            display: inline-block;
+            font-family: $font-heading;
+            margin: 0 2rem;
+            color: $color-white;
+        }
+
+        .board-privacy {
+            display: inline-block;
+            color: $color-white;
+        }
+    }
+
+    &__right-items{
+        display: flex;
+        align-items: center;
+
+        .user-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 10rem;
+            border: 0.5px solid $color-white;
+            border-radius: $border-radius;
+            padding: 0.5rem;
+            background-color: rgba(0,0,0,0.8);
+            text-decoration: none;
+            color: $color-white;
+    
+            .user-avatar { 
+                height: 2rem;
+            }
+    
+            &:hover {
+                background-color: $color-white;
+                color: black;
+            }
+        }
+    
+        .add-list {
+            height: 3rem;
+            cursor: pointer;
+            margin-left: 2rem;
+        }
+    }
+}
+
+//// IMPORTANT!!! CLEARFIX IS LOCATED IN THE APPLICATION VIEW FILE
+//// It is set to conditionally render when @board is not present
+//// so that all pages will be affected but the board show page
+.clearfix {
+    display: block;
+    width: 100vw;
+    height: 5rem;
+}

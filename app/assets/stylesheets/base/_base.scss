@@ -1,0 +1,26 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-family: "Lato";
+    color: $color-white;
+    background-color: slategrey;
+}
+
+.app-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+}

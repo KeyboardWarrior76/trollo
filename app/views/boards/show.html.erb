@@ -1,2 +1,151 @@
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
+
+<div class="wallpaper" style="background-image: url( <%= @board.picture %> );"></div>
+
+<div class="lists-container">
+    <% @lists.each() do |list| %>
+        <div class="list">
+
+            <%# LIST HEADING %>
+            <div class="list__heading" >
+                <h3> <%= list.list %> </h3> 
+                <label for="list<%= list.id %>">
+                    <img class="add-item" src="/assets/plus-line.svg" alt="icon to add new item">
+                </label>
+            </div>
+
+            <%# CREATE ITEM FORM %>
+            <input class="list-checkbox" id="list<%= list.id %>" type="checkbox" >
+            <%= form_tag("/lists/#{list.id}/items/", local: true, method: :create, class: "item-create") do %>
+                    <%= label_tag :item, "", class: "lists-label" %>
+                    <%= text_field_tag :item , nil, placeholder: " Item Name", class: "list-name" %>
+
+                    <%= label_tag :board_id, "" %>
+                    <%= text_field_tag :board_id, nil, value: @board.id.to_i, style: "display: none;" %>
+
+                    <%= submit_tag "", type: :image, class: "item-create-submit", src: "/assets/round-line-bottom-arrow" %>
+                
+            <% end %>
+            <%# ITEMS IN LISTS STARTS HERE %>
+            <% Item.get_by_user_and_list(current_user.id, list.id).each() do |item| %>
+                <label for="item<%= item.id %>"> 
+                    <div class="list__item">
+                        <%# DROPDOWN ICON %>
+                        <img class="dropdown-img" src="/assets/angle-circle-down.svg" alt="dropdown icon">
+
+                        <%# ITEM HEADING %>
+                        <p> <%= "#{"(" + item.priority + ")" if(item.priority != "N/A")} #{item.item}"%> </p>
+
+                        <%# INVISIBLE CHECKBOX %>
+                        <input  class="item-checkbox <%= item.id %>" id="item<%= item.id %>" type="checkbox">
+
+                        <%# ITEM UPDATE FORM %>
+                        <%= form_tag("/lists/#{list.id}/items/#{item.id}", local: true, method: :put, class: "list__item-form") do %>
+
+                            <%= label_tag :board_id, "" %>
+                            <%= text_field_tag :board_id, nil, value: @board.id.to_i, style: "display: none;" %>
+
+
+                            <div class="priority-input">
+                                <%= label_tag :priority, nil, class: "priority-label" %>
+                                <%= select_tag :priority, options_for_select(["N/A", "A", "B", "C", "D"], item.priority), required: true, class: "priority-input" %>
+                            </div>
+
+                            <%= label_tag :details, nil, class: "details-label" %>
+                            <%= text_area_tag :details, content = item.details %>
+
+                            <%= form_tag("/lists/#{list.id}/items/#{item.id}", local: true, method: :delete) do %>
+                                <%= label_tag :board_id, "" %>
+                                <%= text_field_tag :board_id, nil, value: @board.id.to_i, style: "display: none;" %>
+                                <%= submit_tag "Delete", class: "item-delete" %>
+                            <% end %>
+
+                        <% end %>
+
+
+
+                    </div>
+                </label>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
+
+<input id="sidebar-checkbox" type="checkbox">
+<div class="sidebar">
+
+    <div class="sidebar__button-container">
+        <label for="radio-list"> <div class="sidebar__radio-label">Lists</div> </label>
+        <label for="radio-user"> <div class="sidebar__radio-label">Users</div> </label>
+    </div>
+
+
+    <input type="radio" name="sidebar-radio" id="radio-list" checked="checked" >
+    <div class="sidebar__list-container">
+
+        <%= form_tag("/boards/#{@board.id}/lists", local: true, method: :create, class: "list-create") do %>
+            <%= submit_tag "", type: :image, class: "list-create-submit", src: "/assets/round-line-bottom-arrow" %>
+
+            <%= label_tag :board_id, "" %>
+            <%= text_field_tag :board_id, nil, value: @board.id.to_i, style: "display: none;" %>
+
+            <%= label_tag :list, "", class: "lists-label" %>
+            <%= text_field_tag :list , nil, placeholder: "New List Name", class: "list-name" %>
+        <% end %>
+
+        <% @lists.each() do |list| %>
+            <label for="edit-list<%= list.id %>">
+                <div class="list-edit-dropdown"> <%= list.list %> </div>
+            </label>
+            <div class="dropdown-border" ></div>
+
+            <input type="radio" id="edit-list<%= list.id %>" name="edit-list-radio" class="edit-list-radio">
+
+            <%= form_tag("/boards/#{@board.id}/lists/#{list.id}", local: true, method: :put, class: "edit-list-form") do %>
+
+                <%= submit_tag "Update" ,class: "list-edit-submit" %>
+                <%= label_tag :list, "", class: "lists-label" %>
+                <%= text_field_tag :list , list.list, placeholder: "Edit List Name", class: "list-name" %>
+                
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "Default" , if(list.order_by == "Default") then :checked end, class: "radio" %>
+                    &nbsp Default
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "Priority", if(list.order_by == "Priority") then :checked end %> 
+                    &nbsp Priority
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "Alphabetical", if(list.order_by == "Alphabetical") then :checked end %> 
+                    &nbsp Alphabetical
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "Recently Created", if(list.order_by == "Recently Created") then :checked end %> 
+                    &nbsp Recently Created
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "Last Created", if(list.order_by == "Last Created") then :checked end %> 
+                    &nbsp Last Created
+                </div>
+
+                <%= label_tag :board_id, "" %>
+                <%= text_field_tag :board_id, nil, value: @board.id.to_i, style: "display: none;" %>
+
+
+                <%= link_to "Delete", "/boards/#{@board.id}/lists/#{list.id}", class: "list-delete",method: :delete %>
+
+            <% end %>
+        <% end %>
+    </div>
+
+    <input type="radio" name="sidebar-radio" id="radio-user">
+    <div class="sidebar__user-container">
+        <h3>PUT USER CONTENT HERE</h3>
+    </div>
+
+</div>
+

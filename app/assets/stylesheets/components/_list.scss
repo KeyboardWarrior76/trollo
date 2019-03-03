@@ -1,0 +1,149 @@
+
+
+.list {
+    position: relative;
+    display: inline-block;
+    margin: 0 2rem 2rem 2rem;
+    width: 35rem;
+    background-color: rgba(0,0,0,0.85);
+    border-radius: $border-radius;
+    padding: 2rem;
+
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $color-white;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.5px solid rgba($color-white, 0.8);
+
+
+        h3 {
+            display: inline-block;
+        }
+
+        .add-item {
+            height: 3rem;
+            cursor: pointer;
+        }
+    }
+
+    .list-checkbox {
+        display: none;
+
+        &:checked + form {
+            display: flex;
+        }
+    }
+
+    .item-create {
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        width: 102%;
+        margin-top: 2rem;
+        font-size: 1.3rem;
+
+        .list-name {
+            width: calc(100% - 4rem);
+            height: 4rem;
+            background-color: rgba(100,100,100, 0.97);
+            color: white;
+            border: none;
+            border-radius: $border-radius;
+            padding-left: 1rem;
+            font-size: 1.7rem;
+            font-family: "Lato";
+            letter-spacing: 1px;
+        }
+
+        .item-create-submit {
+            width: 3rem;
+            margin: auto;
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+.list__item {
+    position: relative;
+    color: $color-white;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: $border-radius;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+
+    &:hover > img {
+        opacity: 1;
+    }
+
+    .item-checkbox {
+        display: none;
+
+        &:checked + form{
+            display: block;
+        }
+
+    }
+
+    .dropdown-img {
+        opacity: 0;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        height: 3rem;
+        transition-duration: 0.3s;
+    }
+}
+
+.list__item-form {
+    display: none;
+    position: relative;
+    margin-top: 2rem;
+
+    label {
+        font-size: 1.4rem;
+    }
+    
+    .priority-input {
+        position: absolute;
+        top: 0;
+        right: 22.5%;
+        width: 13.5rem;
+   
+        select {
+            width: 4.5rem;
+            color: $color-white;
+            background-color: rgba(0,0,0,0.4);
+            border: none;
+            height: 2.3rem;
+        }
+    }
+
+    textarea {
+        width: 100%;
+        height: 11rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        color: $color-white;
+        background-color: rgba(0,0,0,0.4);
+        border: none;
+        border-radius: $border-radius;
+        font-size: 1.4rem;
+        resize: vertical;
+        overflow: auto;
+    }
+}
+
+.item-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.35rem 1rem; 
+    border: 1px solid crimson;
+    border-radius: $border-radius;
+    color: crimson;
+    background-color: rgba(0,0,0,0.4);
+}

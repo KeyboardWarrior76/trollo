@@ -1,0 +1,19 @@
+.wallpaper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+
+.lists-container {
+    position: relative;
+    top: 7rem;
+    height: calc(100% - 7rem);
+    padding: 2rem ;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
