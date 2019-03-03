@@ -26,7 +26,7 @@
                 
             <% end %>
             <%# ITEMS IN LISTS STARTS HERE %>
-            <% Item.get_by_user_and_list(current_user.id, list.id).each() do |item| %>
+            <% Item.get_by_user_and_list(current_user.id, list.id, list.order_by).each() do |item| %>
                 <label for="item<%= item.id %>"> 
                     <div class="list__item">
                         <%# DROPDOWN ICON %>
@@ -106,29 +106,30 @@
                 <%= submit_tag "Update" ,class: "list-edit-submit" %>
                 <%= label_tag :list, "", class: "lists-label" %>
                 <%= text_field_tag :list , list.list, placeholder: "Edit List Name", class: "list-name" %>
-                
-                <div class="radio-container">
-                    <%= radio_button_tag :order_by, "Default" , if(list.order_by == "Default") then :checked end, class: "radio" %>
-                    &nbsp Default
-                </div>
+
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "Priority", if(list.order_by == "Priority") then :checked end %> 
-                    &nbsp Priority
-                </div>
-
-                <div class="radio-container">
-                    <%= radio_button_tag :order_by, "Alphabetical", if(list.order_by == "Alphabetical") then :checked end %> 
+                    <%= radio_button_tag :order_by, "UPPER(item)", if(list.order_by == "UPPER(item)") then :checked end %> 
                     &nbsp Alphabetical
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "Recently Created", if(list.order_by == "Recently Created") then :checked end %> 
+                    <%= radio_button_tag :order_by, "priority", if(list.order_by == "priority") then :checked end %> 
+                    &nbsp Priority
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "priority DESC" , if(list.order_by == "priority DESC") then :checked end, class: "radio" %>
+                    &nbsp Reverse Priority
+                </div>
+
+                <div class="radio-container">
+                    <%= radio_button_tag :order_by, "created_at", if(list.order_by == "created_at") then :checked end %> 
                     &nbsp Recently Created
                 </div>
 
                 <div class="radio-container">
-                    <%= radio_button_tag :order_by, "Last Created", if(list.order_by == "Last Created") then :checked end %> 
+                    <%= radio_button_tag :order_by, "created_at DESC", if(list.order_by == "created_at DESC") then :checked end %> 
                     &nbsp Last Created
                 </div>
 

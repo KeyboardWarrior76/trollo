@@ -8,6 +8,7 @@ class List < ApplicationRecord
       SELECT l.* FROM lists AS l
       WHERE l.user_id = ?
       AND l.board_id = ?
+      ORDER BY l.created_at
     ", user_id, board_id])
   end
 
@@ -15,7 +16,7 @@ class List < ApplicationRecord
     return List.find_by_sql(["
       INSERT INTO lists(order_by, list, created_at, updated_at, user_id, board_id)
       VALUES (?, ?, ?, ?, ?, ?);
-    ",  attr[:order_by] || "Default", attr[:list], DateTime.now(), DateTime.now(), attr[:user_id], attr[:board_id]])
+    ",  attr[:order_by] || "created_at", attr[:list], DateTime.now(), DateTime.now(), attr[:user_id], attr[:board_id]])
   end
 
   def self.destroy_list(user_id, list_id)

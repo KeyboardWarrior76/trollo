@@ -2,11 +2,14 @@ class Item < ApplicationRecord
   belongs_to :list
   belongs_to :user
 
-  def self.get_by_user_and_list(user_id, list_id)
+
+  ##### Probably a SQL injection nightmare #####
+  def self.get_by_user_and_list(user_id, list_id, order_by)
     return Item.find_by_sql(["
-      SELECT i.* FROM items AS i
-      WHERE i.user_id = ?
-      AND i.list_id = ?
+      SELECT * FROM items AS i
+      WHERE user_id = ?
+      AND list_id = ?
+      ORDER BY #{order_by}
     ", user_id, list_id])
   end
 
@@ -16,5 +19,4 @@ class Item < ApplicationRecord
       VALUES (?, ?, ?, ?, ?, ?, ?);
     ", attr[:item], attr[:priority] || "N/A", attr[:details] || "", DateTime.now(), DateTime.now(), attr[:user_id], attr[:list_id]])
   end
-
 end

@@ -51,7 +51,7 @@ User.all().each() {|user|
         for i in (1..3)
             list = List.create(
                 list: Faker::Verb.base() + " today",
-                order_by: "Priority",
+                order_by: "created_at",
                 user_id: user.id,
                 board_id: board.id
             )
