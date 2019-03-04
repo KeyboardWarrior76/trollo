@@ -24,4 +24,29 @@ class Board < ApplicationRecord
 
         ", user_id, board_id]).first()
     end
+
+    def self.update_board(attr)
+        return Board.find_by_sql(["
+            UPDATE boards
+            SET board = ?,
+                public = ?,
+                picture = ?
+            WHERE id = ?
+        ", attr[:board], attr[:public], attr[:picture], attr[:board_id]])
+    end
+
+    def self.destroy_board(user_id, board_id)
+        lists = List.get_lists_by_user_and_board(user_id, board_id)
+
+        lists.each() {|list|
+            List.destroy_list(user_id, list.id)
+        }
+
+        UserBoard.destroy_user_board(user_id, board_id)
+
+        return Board.find_by_sql(["
+            DELETE FROM boards
+            WHERE id = ?
+        ", board_id])
+    end
 end

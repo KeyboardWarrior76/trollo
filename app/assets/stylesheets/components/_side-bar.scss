@@ -209,4 +209,95 @@
     display: none;
     width: 100%;
     height: 100%;
+
+    .shared-users {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 4rem 0.5rem 1rem 0.5rem;
+        border-bottom: 0.5px solid rgba($color-white, 0.5);
+
+        .current-users{
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            padding: 0.5rem 2rem;
+            border-radius: 0 0  $border-radius $border-radius;
+            background-color: rgba($color-white, 0.05);
+            border-bottom: 1px solid rgba($color-white, 0.3);
+            border-left: 1px solid rgba($color-white, 0.3);
+            border-right: 1px solid rgba($color-white, 0.3);
+        }
+    }
+
+    
+    .link-to-user {
+        text-decoration: none;
+        color: $color-white;
+
+        .shared-users__icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgba(255,255,255,0.15);
+            border-radius: $border-radius;
+            height: 6rem;
+            width: 5rem;
+            font-size: 0.8rem;
+            margin: 0.5rem;
+            overflow: hidden;
+
+            img {
+                height: 80%;
+                width: 90%;
+                border-radius: $border-radius;
+            }
+
+            &:hover {
+                background-color: rgba(255,255,255,0.05);
+            }
+        }
+    }
+
+    .add-users{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow: scroll;
+        width: 100%;
+        height: 100%;
+        padding: 4rem 0 0 2rem;
+
+        .select-users {
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            padding: 0.5rem 2rem;
+            border-radius: 0 0  $border-radius $border-radius;
+            background-color: rgba($color-white, 0.05);
+            border-bottom: 1px solid rgba($color-white, 0.3);
+            border-left: 1px solid rgba($color-white, 0.3);
+            border-right: 1px solid rgba($color-white, 0.3);
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $color-white;
+            padding: 0.5rem 2rem;
+            margin: 1rem 0;
+            background-color: rgba(255,255,255,0.15);
+            border-radius: $border-radius;
+            cursor: pointer;
+
+            &:hover{
+                background-color: $color-white;
+                color: black;
+            }
+        }
+    }
 }

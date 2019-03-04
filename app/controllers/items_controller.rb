@@ -11,9 +11,6 @@ class ItemsController < ApplicationController
     end
 
     def update
-        puts "==============================="
-        puts params
-        puts "==============================="
         Item.update_item(
             user_id: current_user.id,
             item_id: params[:id],

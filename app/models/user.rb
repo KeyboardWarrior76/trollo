@@ -16,14 +16,20 @@ class User < ApplicationRecord
     ", user_id])
   end
 
-  def get_users_by_board(board_id)
+  def self.get_users_by_board(board_id)
     return User.find_by_sql(["
 
-        SELECT * FROM users AS u
+        SELECT u.* FROM users AS u
         INNER JOIN user_boards AS ub 
-            ON u.id = ub.board_id
+            ON u.id = ub.user_id
         WHERE ub.board_id = ?
 
     ", board_id])
+  end
+
+  def self.get_all_users
+    return User.find_by_sql(["
+      SELECT * FROM users  
+    "])
   end
 end

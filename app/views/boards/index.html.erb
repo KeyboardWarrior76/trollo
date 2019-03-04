@@ -1,10 +1,33 @@
 
-<h1>Your Boards</h1>
 
-<% @boards.each() do |board| %>
+<div class="board-index-container">
+    <div class="boards-meta">
+        <h2>Click a board to continue, or...</h2>
+        <%= link_to "Create A New Board", new_board_path, class: "new-board-link" %>
+    </div>
 
-    <h3> <%= board.board %> </h3>
-    <%= link_to "Go To Board", board_path(board.id) %>
+    <div class="boards-list">
+        <div class="boards-heading">
+            <h1>All Boards</h1>
+        </div>
+    
+        <% @boards.each() do |board| %>
+            <div class="board" style="background-image: url( <%= board.picture %> );" >
+                <div class="board__info">
+                    <%= link_to board.board, board_path(board.id), class: "board__link-to" %>
+                    <span class="public" style="color: <%= (board.public)? "#4db6ac" : "#7986cb" %> ;" > <%= (board.public)? "Public" : "Private" %> </span> 
+                    <p class="num-users" ><%= User.get_users_by_board(board.id).length %> users on board</p>
+
+                    <%= link_to "Update", edit_board_path(board.id), class: "edit-board-link" %>
+                    <%= link_to "Delete", board_path(board.id), method: :delete, class: "delete-board-link" %>
+
+                </div>
+                <%= link_to "", board_path(board.id), class: "board__click-zone" %>
+            </div>
+
+        <% end %>
+    </div>
+</div>
 
 
-<% end %>
+

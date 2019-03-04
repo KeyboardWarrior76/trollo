@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'users#show'
   
   devise_for :users
   resources :users, only: [:index, :show]
@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   put "/lists/:id/items/:id" => "items#update"
   delete "/lists/:id/items/:id" => "items#destroy"
 
+  post "/boards/:board_id/user/:id/userboards" => "user_boards#create"
+  delete "/boards/:board_id/user/:id/userboards" => "user_boards#destroy"
 
 end

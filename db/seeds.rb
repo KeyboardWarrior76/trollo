@@ -16,15 +16,15 @@ User.create(
     avatar: Faker::Avatar.image()
 )
 
-# for i in (1..2)
-#     User.create(
-#         email: Faker::Internet.email(),
-#         password: "password",
-#         first_name: Faker::Name.first_name(),
-#         last_name: Faker::Name.last_name(),
-#         avatar: Faker::Avatar.image()
-#     )
-# end
+for i in (1..5)
+    User.create(
+        email: Faker::Internet.email(),
+        password: "password",
+        first_name: Faker::Name.first_name(),
+        last_name: Faker::Name.last_name(),
+        avatar: Faker::Avatar.image()
+    )
+end
 
 User.all().each() {|user|
     for i in (0..6)

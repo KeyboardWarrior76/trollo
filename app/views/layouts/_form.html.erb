@@ -1,0 +1,32 @@
+<div class="form-container">
+    <h2 class="form-heading" > <%= @board_edit? "Modify Board" : "Create Board" %> </h2>
+
+     <%= form_tag( @board_edit? "/boards/#{@board_edit.id}" : "/boards" , local: true, method: @board_edit? :put : :post , class: "") do %>
+
+        <%= label_tag :board, "" %>
+        <%= text_field_tag :board, nil, placeholder: "Board Name", class: "form-item board-input", value: @board_edit? @board_edit.board : nil %>
+
+
+
+        <%= label_tag :public, "" %>
+        <%= select_tag :public, options_for_select([["public", true],["private", false]], @board_edit? @board_edit.public : nil ), class: "form-item board-public", required: true %>
+
+        <%= label_tag :picture, "" %>
+        <%= select_tag :picture, options_for_select([
+            ["Snowy Road", "/assets/snowy-road.jpg"],
+            ["Mountain Lake","/assets/mountain-lake.jpg"],
+            ["Ocean Waves","/assets/waves.jpg"], 
+            ["Neon Halls" ,"/assets/stairs.jpg"], 
+            ["Iridescent Flowers", "/assets/ladybug.jpg"], 
+            ["Beach Gorge","/assets/gorge.jpg"], 
+            ["City Sunset" ,"/assets/city.jpg"]
+        ], @board_edit? @board_edit.picture : nil  ), class: "form-item board-picture" ,required: true %>
+
+
+
+
+        <%= submit_tag "Update" , class: "form-item board-submit" %>
+
+    <% end %>
+
+</div>

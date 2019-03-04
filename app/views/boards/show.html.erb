@@ -154,7 +154,26 @@
 
     <input type="radio" name="sidebar-radio" id="radio-user">
     <div class="sidebar__user-container">
-        <h3>PUT USER CONTENT HERE</h3>
+        <div class="shared-users">
+            <p class="current-users" >Current Users</p>
+            <% @board_users.each() do |user| %>
+                <a class="link-to-user" href="/users/<%= user.id %>">
+                    <div class="shared-users__icon">
+                        <img src=" <%= user.avatar %> " alt="user picture">
+                        <p> <%= user.first_name %> </p>
+                    </div>
+                </a>
+            <% end %>
+        </div>
+
+        <div class="add-users">
+            <p class="select-users">Select Users To Add</p>
+            <% @all_users.each() do |user| %>
+                <%= link_to user.full_name(), "/boards/#{@board.id}/user/#{user.id}/userboards", class: "add-users__link", method: :post  %>
+            <% end %>
+        </div>
+
+
     </div>
 
 </div>

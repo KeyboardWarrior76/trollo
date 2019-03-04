@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     return Item.find_by_sql(["
       INSERT INTO items(item, priority, details, created_at, updated_at, user_id, list_id)
       VALUES (?, ?, ?, ?, ?, ?, ?);
-    ", attr[:item], attr[:priority] || "N/A", attr[:details] || "", DateTime.now(), DateTime.now(), attr[:user_id], attr[:list_id]])
+    ", attr[:item], attr[:priority] || "C", attr[:details] || "", DateTime.now(), DateTime.now(), attr[:user_id], attr[:list_id]])
   end
 
   def self.update_item(attr)
