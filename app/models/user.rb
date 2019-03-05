@@ -9,11 +9,11 @@ class User < ApplicationRecord
     return "#{self.first_name} #{self.last_name}"
   end
 
-  def get_user(user_id)
+  def self.get_user(user_id)
     return User.find_by_sql(["
       SELECT * FROM users
       WHERE users.id = ?
-    ", user_id])
+    ", user_id]).first()
   end
 
   def self.get_users_by_board(board_id)
