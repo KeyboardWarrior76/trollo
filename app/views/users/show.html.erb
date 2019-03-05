@@ -1,11 +1,12 @@
 
-
-<% if(@user) %>
-    <img src=" <%= @user.avatar %> " alt="user picture">
-    <h1> <%= @user.full_name() %> </h1>
-<% else %>
-    <img src=" <%= current_user.avatar %> " alt="user picture">
-    <h1> Welcome To Trollo, <br> <%= current_user.full_name() %> </h1>
-    <%= link_to "edit", edit_user_registration_path(current_user.id), class: "user-button user-green" %>
-    <%= link_to "signout", destroy_user_session_path, class: "user-button user-pink", method: :delete %>
-<% end %>
+<div class="user-info">
+    <% if(@user) %>
+        <img src=" <%= @user.avatar %> " alt="user picture">
+        <h1> <%= @user.full_name() %> </h1>
+    <% else %>
+        <img src=" <%= current_user.avatar %> " alt="user picture">
+        <h1> Welcome To Trollo, <br> <%= current_user.full_name() %> </h1>
+        <%= link_to "edit", edit_user_registration_path(current_user.id), class: "user-button user-green" %>
+        <%= link_to "signout", destroy_user_session_path, class: "user-button user-pink", method: :delete %>
+    <% end %>
+</div>

@@ -3,6 +3,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.get_user(params[:id]) if(params[:id].to_i != current_user.id)
+    if(params[:id].to_i != current_user.id)
+      @user = User.get_user(params[:id])
+      @boards = Board
+                .get_user_boards(params[:id])
+                .select() {|item|
+                  item.public == true
+                }
+    end
   end
 end
