@@ -4,23 +4,23 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "form-item user-email", placeholder: "Email" %>
-
-
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-item user-password", placeholder: "Password" %>
+  <div class="registration-form-contents">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "r-form-item session-form", placeholder: "Email" %>
 
 
-  <% if devise_mapping.rememberable? %>
-    <div class="remember-me-container">
-      <%= f.check_box :remember_me, class: "remember-me" %>
-      <%= f.label :remember_me %>
-    </div>  
-  <% end %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "r-form-item session-form", placeholder: "Password" %>
 
 
-    <%= f.submit "Submit", class: "form-item user-submit" %>
+    <% if devise_mapping.rememberable? %>
+      <div class="remember-me-container">
+        <%= f.check_box :remember_me, class: "remember-me" %>
+        <%= f.label :remember_me %>
+      </div>  
+    <% end %>
 
+
+    <%= f.submit "Submit", class: "r-form-item user-submit" %>
+  </div>
 <% end %>
 
 <div class="devise-links form-heading">

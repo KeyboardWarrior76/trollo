@@ -66,28 +66,45 @@
 }
 
 
-.user-email {
-    top: 30rem;
+.registration-form-contents {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+
 }
 
-.user-password {
-    top: 40rem;
+.r-form-item {
+    display: inline-block;
+    // position: absolute;
+    // transform: translate(-50%, -50%);
+    // left: 50%; 
+    width: 100%;
+    height: 4rem;
+    border: none;
+    border-bottom: 3px solid $color-green;
+    border-radius: $border-radius;
+    background-color: rgba(0,0,0,0.4);
+    color: $color-green;
+    padding-left: 1rem;
+    margin-top: 4rem;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    font-family: "Lato";
 }
 
-.user-password-confirm {
-    top: 50rem;
-}
-
-.edit-password {
-    top: 50rem;
-}
-
-.user-current-password {
-    top: 60rem;
+.session-form {
+    position: relative;
+    bottom: 10rem;
 }
 
 .user-submit {
-    top: 50rem;
+    // bottom: 10rem;
     border: 1px solid $color-green;
     width: 22.5rem;
     font-size: 2.5rem;
@@ -127,7 +144,7 @@
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 60rem;
+    bottom: 10rem;
     color: $color-blue;
 }
 
@@ -140,7 +157,6 @@
         display: block;
         height: 110%;
         width: 110%;
-        // transform: translateY( -2px);
         border-radius: $border-radius;
         background-color: $color-blue;
     }
@@ -156,7 +172,7 @@
 }
 
 .devise-links {
-    top: 65rem;
+    top: 83rem;
     font-size: 1.6rem;
     letter-spacing: 1px;
 
@@ -167,7 +183,7 @@
 }
 
 .edit-links {
-    top: 80rem;
+    top: 87rem;
 
     form {
         input {
@@ -186,6 +202,6 @@
     transform: rotate(-20deg);
     position: absolute;
     top: 10rem;
-    left: 15rem;
+    left: 10%;
     width: 40rem;
 }
