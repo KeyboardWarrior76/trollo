@@ -6,8 +6,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    # @board = Board.get_user_board(current_user.id, params[:id])
-    @lists = List.get_lists_by_user_and_board(current_user.id, @board.id)
+    @lists = List.get_lists_by_board(@board.id)
     @board_users = User.get_users_by_board(@board.id)
     @all_users = User.get_all_users()
   end

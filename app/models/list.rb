@@ -3,13 +3,12 @@ class List < ApplicationRecord
   belongs_to :user
 
 
-  def self.get_lists_by_user_and_board(user_id, board_id)
+  def self.get_lists_by_board(board_id)
     return List.find_by_sql(["
       SELECT l.* FROM lists AS l
-      WHERE l.user_id = ?
-      AND l.board_id = ?
+      WHERE l.board_id = ?
       ORDER BY l.created_at
-    ", user_id, board_id])
+    ", board_id])
   end
 
   def self.create_list(attr)

@@ -4,13 +4,12 @@ class Item < ApplicationRecord
 
 
   ##### Probably a SQL injection nightmare #####
-  def self.get_by_user_and_list(user_id, list_id, order_by)
+  def self.get_by_list(list_id, order_by)
     return Item.find_by_sql(["
       SELECT * FROM items AS i
-      WHERE user_id = ?
-      AND list_id = ?
+      WHERE list_id = ?
       ORDER BY #{order_by}
-    ", user_id, list_id])
+    ", list_id])
   end
 
   def self.create_item(attr)
