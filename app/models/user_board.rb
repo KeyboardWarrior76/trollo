@@ -2,6 +2,13 @@ class UserBoard < ApplicationRecord
   belongs_to :user
   belongs_to :board
 
+  def self.get_user_boards(user_id, board_id)
+    return UserBoard.find_by_sql(["
+      SELECT * FROM user_boards
+      WHERE user_id = ?
+      AND board_id = ?
+    ", user_id, board_id]).first()
+  end
 
   def self.create_user_board(user_id, board_id)
     return UserBoard.find_by_sql(["
