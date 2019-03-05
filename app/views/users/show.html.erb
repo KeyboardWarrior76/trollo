@@ -1,12 +1,34 @@
 
-<div class="user-info">
-    <% if(@user) %>
-        <img src=" <%= @user.avatar %> " alt="user picture">
-        <h1> <%= @user.full_name() %> </h1>
-    <% else %>
-        <img src=" <%= current_user.avatar %> " alt="user picture">
-        <h1> Welcome To Trollo, <br> <%= current_user.full_name() %> </h1>
-        <%= link_to "edit", edit_user_registration_path(current_user.id), class: "user-button user-green" %>
-        <%= link_to "signout", destroy_user_session_path, class: "user-button user-pink", method: :delete %>
-    <% end %>
+
+<div class="user-show-container">
+    <div class="user">
+        <% if(@user) %>
+            <div class="user__card">
+                <img src=" <%= @user.avatar %> " alt="user picture">
+                <h1> <%= @user.full_name() %> </h1>
+            </div>
+        <% else %>
+            <div class="user__card">
+                <img src=" <%= current_user.avatar %> " alt="user picture">
+                <h1> Welcome To Trollo, <br> <%= current_user.full_name() %> </h1>
+                <%= link_to "edit", edit_user_registration_path(current_user.id), class: "user__button user--green" %>
+                <%= link_to "signout", destroy_user_session_path, class: "user__button user--pink", method: :delete %>
+            </div>
+        <% end %>
+    </div>
+
+
+    <div class="page-contents">
+        <img src="/assets/trollo-white.svg" alt="trollo logo" class="page-contents__trollo-logo">
+        <div class="ball b1"></div>
+        <div class="ball b2"></div>
+        <div class="ball b3"></div>
+        <div class="ball b4"></div>
+        <div class="ball b5"></div>
+        <div class="ball b6"></div>
+        <div class="ball b7"></div>
+        <div class="ball b8"></div>
+        <div class="ball b9"></div>
+        <div class="ball b10"></div>
+    </div>
 </div>
