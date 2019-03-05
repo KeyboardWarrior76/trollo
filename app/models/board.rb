@@ -36,13 +36,13 @@ class Board < ApplicationRecord
     end
 
     def self.destroy_board(user_id, board_id)
-        lists = List.get_lists_by_user_and_board(user_id, board_id)
+        lists = List.get_lists_by_board(board_id)
 
         lists.each() {|list|
             List.destroy_list(user_id, list.id)
         }
 
-        UserBoard.destroy_user_board(user_id, board_id)
+        UserBoard.destroy_user_boards(board_id)
 
         return Board.find_by_sql(["
             DELETE FROM boards

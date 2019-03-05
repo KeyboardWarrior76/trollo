@@ -17,11 +17,10 @@ class UserBoard < ApplicationRecord
     ", user_id, board_id, DateTime.now(), DateTime.now()])
   end
 
-  def self.destroy_user_board(user_id, board_id)
+  def self.destroy_user_boards(board_id)
     return UserBoard.find_by_sql(["
       DELETE FROM user_boards
-      WHERE user_id = ?
-      AND board_id = ?  
-    ", user_id, board_id])
+      WHERE board_id = ?  
+    ", board_id])
   end
 end
