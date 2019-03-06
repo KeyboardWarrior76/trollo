@@ -3,10 +3,10 @@
 <div class="navbar">
     <div class="navbar__board-items">
         <% if current_user %>
+            <%= link_to "Boards", boards_path(current_user.id) %>
             <% if !@board %>
                 <img src="/assets/trollo-white.svg" alt="" class="navbar__logo">
             <% end %>
-            <%= link_to "Boards", boards_path(current_user.id) %>
         <% end %>
         <% if @board %>
             <h3 class="board-name" > <%= @board.board %> </h3>
