@@ -72,7 +72,14 @@
             margin-left: 2rem;
         }
     }
+
+    &__logo {
+        height: 2rem;
+        margin-right: 1rem;
+    }
 }
+
+
 
 //// IMPORTANT!!! CLEARFIX IS LOCATED IN THE APPLICATION VIEW FILE
 //// It is set to conditionally render when @board is not present

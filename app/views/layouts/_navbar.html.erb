@@ -3,6 +3,9 @@
 <div class="navbar">
     <div class="navbar__board-items">
         <% if current_user %>
+            <% if !@board %>
+                <img src="/assets/trollo-white.svg" alt="" class="navbar__logo">
+            <% end %>
             <%= link_to "Boards", boards_path(current_user.id) %>
         <% end %>
         <% if @board %>
@@ -11,7 +14,9 @@
         <% end %>
     </div>
 
-    <%# <img src="" alt="" class="navbar__logo"> %>
+        <% if @boards %>
+                
+        <% end %>
 
     <% if current_user %>
         <div class="navbar__right-items">
