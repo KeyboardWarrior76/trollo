@@ -13,28 +13,21 @@ User.create(
     password: "password",
     first_name: Faker::Name.first_name(),
     last_name: Faker::Name.last_name(),
-    avatar: Faker::Avatar.image()
+    avatar: "https://robohash.org/#{rand(100)}?set=set4"
 )
 
-for i in (1..5)
+for i in (1..9)
     User.create(
         email: Faker::Internet.email(),
         password: "password",
         first_name: Faker::Name.first_name(),
         last_name: Faker::Name.last_name(),
-        avatar: Faker::Avatar.image()
+        avatar: "https://robohash.org/#{rand(100)}?set=set4"
     )
 end
 
 User.all().each() {|user|
     for i in (0..6)
-        # val = Random.rand(pictures.length).to_i
-
-        # board = Board.create(
-        #     board: Faker::Games::SuperSmashBros.stage(),
-        #     public: Faker::Boolean.boolean(),
-        #     picture: pictures[val]
-        # )
 
         board = Board.create(
             board: Faker::Games::SuperSmashBros.stage(),
