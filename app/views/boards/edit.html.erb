@@ -3,10 +3,6 @@
     <%= render "/layouts/form" %>
 
     <div class="boards-list">
-        <div class="boards-heading">
-            <h1>All Boards</h1>
-        </div>
-    
         <% @boards.each() do |board| %>
             <div class="board" style="background-image: url( <%= board.picture %> );" >
                 <div class="board__info">
