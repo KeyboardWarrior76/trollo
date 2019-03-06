@@ -12,4 +12,10 @@ class UsersController < ApplicationController
                 }
     end
   end
+
+
+  def destroy
+    User.destroy_user(current_user.id);
+    redirect_to(new_user_session_path)
+  end
 end

@@ -18,12 +18,10 @@ class User < ApplicationRecord
 
   def self.get_users_by_board(board_id)
     return User.find_by_sql(["
-
         SELECT u.* FROM users AS u
         INNER JOIN user_boards AS ub 
             ON u.id = ub.user_id
         WHERE ub.board_id = ?
-
     ", board_id])
   end
 
@@ -31,5 +29,18 @@ class User < ApplicationRecord
     return User.find_by_sql(["
       SELECT * FROM users  
     "])
+  end
+
+  def self.destroy_user(user_id) 
+    boards = Board.get_user_boards(user_id);
+
+    boards.each() {|board|
+      Board.destroy_board(user_id, board.id)
+    }
+
+    return User.find_by_sql(["
+      DELETE FROM users
+      where id = ?
+    ", user_id])
   end
 end
