@@ -13,15 +13,3 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-
-
-// Get the input box
-var textareas = document.getElementsByTagName("textarea");
-
-console.log(textareas);
-console.log(Array.from(textareas));
-console.log([...textareas]);
-/// LITERLLY THROWS AN ERROR!!!!!
-// textareas.forEach((item) => {
-//     console.log(item);
-// });
