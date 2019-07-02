@@ -6,7 +6,7 @@ UserBoard.destroy_all()
 Board.destroy_all()
 User.destroy_all()
 
-pictures = ["/assets/snowy-road.jpg", "/assets/mountain-lake.jpg", "/assets/waves.jpg", "/assets/stairs.jpg", "/assets/ladybug.jpg", "/assets/gorge.jpg", "/assets/city.jpg"]
+pictures = ["/assets/snowy-road", "/assets/mountain-lake", "/assets/waves", "/assets/stairs", "/assets/ladybug", "/assets/gorge", "/assets/city"]
 
 User.create(
     email: "fake@mail.com",

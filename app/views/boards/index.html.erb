@@ -8,7 +8,7 @@
 
     <div class="boards-list">
         <% @boards.each() do |board| %>
-            <div class="board" style="background-image: url( <%= board.picture %> );" >
+            <div class="board" style="background-image: url( <%= board.picture %>-small.jpg );" >
                 <div class="board__info">
                     <%= link_to board.board, board_path(board.id), class: "board__link-to" %>
                     <span class="public" style="color: <%= (board.public)? "#4db6ac" : "#7986cb" %> ;" > <%= (board.public)? "Public" : "Private" %> </span> 
