@@ -11,10 +11,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
-  gem 'faker'
   gem 'rb-readline'
 end
 
