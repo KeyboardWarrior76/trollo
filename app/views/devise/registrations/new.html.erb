@@ -1,11 +1,12 @@
 <img src="/assets/trollo-white.svg" alt="trollo logo" class="trollo-form-logo">
 
-<h2 class="form-heading" >Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="registration-form-contents">
+      <h2 class="form-heading" >Sign up</h2>
+      
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "r-form-item", placeholder: "First Name"%>
 
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "r-form-item", placeholder: "Last Name"%>
@@ -21,11 +22,11 @@
 
 
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "r-form-item", placeholder: "Password Confirmation"%><%= f.submit "Sign up", class: "r-form-item user-submit user-signup" %>
+
+      <div class="devise-links form-heading">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
 
 <% end %>
 
-
-<div class="devise-links form-heading">
-  <%= render "devise/shared/links" %>
-</div>

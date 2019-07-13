@@ -67,23 +67,18 @@
 
 
 .registration-form-contents {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 40%;
+    min-width: 40rem;
+    margin: 10rem auto;
 
 }
 
 .r-form-item {
     display: inline-block;
-    // position: absolute;
-    // transform: translate(-50%, -50%);
-    // left: 50%; 
     width: 100%;
     height: 4rem;
     border: none;
@@ -98,13 +93,7 @@
     font-family: "Lato";
 }
 
-.session-form {
-    position: relative;
-    bottom: 10rem;
-}
-
 .user-submit {
-    // bottom: 10rem;
     border: 1px solid $color-green;
     width: 22.5rem;
     font-size: 2.5rem;
@@ -126,10 +115,6 @@
 
 .form-heading {
     display: inline-block;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 15rem;
-    left: 50%;
     text-align: center;
     letter-spacing: 7px;
     font-size: 3.5rem;
@@ -141,10 +126,7 @@
 } 
 
 .remember-me-container {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    bottom: 10rem;
+    margin-top: 5rem;
     color: $color-blue;
 }
 
@@ -172,7 +154,7 @@
 }
 
 .devise-links {
-    top: 83rem;
+    margin-top: 7.5rem;
     font-size: 1.6rem;
     letter-spacing: 1px;
 
@@ -204,4 +186,24 @@
     top: 10rem;
     left: 10%;
     width: 40rem;
+
+    @media(max-width: 1300px) {
+        left: 5%;
+        transform: rotate(-30deg) scale(0.75);
+    }
+
+    @media(max-width: 1000px) {
+        left: 0%;
+        transform: rotate(-40deg) scale(0.5);
+    }
+
+    @media(max-width: 800px) {
+        top: 5rem;
+        left: -15%;
+        transform: rotate(-40deg) scale(0.5);
+    }
+
+    @media(max-width: 600px) {
+        display: none;
+    }
 }
