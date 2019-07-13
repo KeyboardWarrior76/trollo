@@ -13,13 +13,13 @@
 
         <%= label_tag :picture, "" %>
         <%= select_tag :picture, options_for_select([
-            ["Snowy Road", "/assets/snowy-road.jpg"],
-            ["Mountain Lake","/assets/mountain-lake.jpg"],
-            ["Ocean Waves","/assets/waves.jpg"], 
-            ["Neon Halls" ,"/assets/stairs.jpg"], 
-            ["Iridescent Flowers", "/assets/ladybug.jpg"], 
-            ["Beach Gorge","/assets/gorge.jpg"], 
-            ["City Sunset" ,"/assets/city.jpg"]
+            ["Snowy Road", "/assets/snowy-road"],
+            ["Mountain Lake","/assets/mountain-lake"],
+            ["Ocean Waves","/assets/waves"], 
+            ["Neon Halls" ,"/assets/stairs"], 
+            ["Iridescent Flowers", "/assets/ladybug"], 
+            ["Beach Gorge","/assets/gorge"], 
+            ["City Sunset" ,"/assets/city"]
         ], @board_edit? @board_edit.picture : nil  ), class: "form-item board-picture" ,required: true %>
 
 
