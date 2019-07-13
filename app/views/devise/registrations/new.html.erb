@@ -10,7 +10,7 @@
 
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "r-form-item", placeholder: "Last Name"%>
 
-      <%= f.text_field :avatar, autofocus: true, autocomplete: "avatar", class: "r-form-item", placeholder: "Avatar URL"%>
+      <%= f.text_field :avatar, value: "https://robohash.org/<your-name-here>", autofocus: true, autocomplete: "avatar", class: "r-form-item", placeholder: "Avatar URL"%>
 
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "r-form-item", placeholder: "Email"%>
 
